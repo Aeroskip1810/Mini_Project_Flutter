@@ -13,18 +13,75 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
 
+  Widget cardButton() {
+    return FloatingActionButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/add');
+      },
+      backgroundColor: primary2Color,
+      child: const Icon(Icons.add),
+    );
+  }
+
+  Widget customBottomNav() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.vertical(
+        top: Radius.circular(0),
+      ),
+      child: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 12,
+        clipBehavior: Clip.antiAlias,
+        child: BottomNavigationBar(
+          backgroundColor: primary3Color,
+          currentIndex: currentIndex,
+          onTap: (value) {
+            // print(value);
+            setState(() {
+              currentIndex = value;
+            });
+          },
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: Container(
+                margin: const EdgeInsets.only(
+                  top: 20,
+                  bottom: 10,
+                ),
+                child: Image.asset(
+                  'assets/home.png',
+                  width: 25,
+                  color: currentIndex == 0
+                      ? backgroundColor
+                      : const Color(0xffFFFFFF),
+                ),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                margin: const EdgeInsets.only(
+                  top: 20,
+                  bottom: 10,
+                ),
+                child: Image.asset(
+                  'assets/profile.png',
+                  width: 27,
+                  color:
+                      currentIndex == 0 ? whiteColor : const Color(0xffC1D8C3),
+                ),
+              ),
+              label: '',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    Widget cardButton() {
-      return FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/add');
-        },
-        backgroundColor: primary2Color,
-        child: const Icon(Icons.add),
-      );
-    }
-
     Widget customBottomNav() {
       return ClipRRect(
         borderRadius: const BorderRadius.vertical(

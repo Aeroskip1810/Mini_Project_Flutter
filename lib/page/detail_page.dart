@@ -12,7 +12,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<DetailPage> {
-  // Text field controllers
+  // text field controllers
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _typeController = TextEditingController();
   final TextEditingController _sizeController = TextEditingController();
@@ -24,7 +24,7 @@ class _MyWidgetState extends State<DetailPage> {
 
   String searchText = '';
 
-  // Create operation
+  // create operation
   Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
     await showModalBottomSheet(
       backgroundColor: backgroundColor,
